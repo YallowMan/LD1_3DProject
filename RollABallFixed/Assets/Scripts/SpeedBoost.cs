@@ -34,7 +34,7 @@ public class SpeedBoost : MonoBehaviour
 
     IEnumerator WaittoSlowDown()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         ReturnToNormalSpeed();
         
     }
@@ -42,10 +42,14 @@ public class SpeedBoost : MonoBehaviour
     {
         isBoosted = false;
         playerController.speed /= 2;
+        Destroy(gameObject);
     }
-    public void OnTriggerEnter(Collider collision)
+    public void OnTriggerEnter(Collider other)
     {
-       IncreaseSpeed();
-       GetComponent<Renderer>().enabled = false;
+        if (other.gameObject.name == "Player" || other.gameObject.CompareTag("Player"))
+        {
+            IncreaseSpeed();
+            GetComponent<Renderer>().enabled = false;
+        }
     }
 }
