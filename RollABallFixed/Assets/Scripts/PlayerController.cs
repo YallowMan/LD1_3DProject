@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	
+	public GameObject EffectPrefab;
 	// Create public variables for player speed, and for the Text UI game objects
 	public float speed;
 
@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 		// ..and if the game object we intersect has the tag 'Pick Up' assigned to it..
 		if (other.gameObject.CompareTag ("Pick Up"))
 		{
+			Instantiate(EffectPrefab, transform.position, Quaternion.identity);
+			
 			// Make the other game object (the pick up) inactive, to make it disappear
 			other.gameObject.SetActive (false);
 

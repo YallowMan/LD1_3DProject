@@ -9,6 +9,7 @@ public class GameView : MonoBehaviour
     public Text resultText;
     public Text timerText;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,4 +29,5 @@ public class GameView : MonoBehaviour
     {
         timerText.text = count.ToString();
     }
+    
 }
