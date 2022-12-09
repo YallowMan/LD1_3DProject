@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpeedBoost : MonoBehaviour
 {
     public PlayerController playerController;
-    public bool isBoosted= false; 
+    public bool isBoosted= false;
+    public GameObject SpeedPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class SpeedBoost : MonoBehaviour
         if (other.gameObject.name == "Player" || other.gameObject.CompareTag("Player"))
         {
             IncreaseSpeed();
+            Instantiate(SpeedPrefab, transform.position, Quaternion.identity);
             GetComponent<Renderer>().enabled = false;
         }
     }
